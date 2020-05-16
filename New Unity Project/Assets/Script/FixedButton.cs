@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.EventSystems;
 
-public class FixedButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class FixedButton : MonoBehaviour
 {
-    [HideInInspector]
-    public bool Pressed = true ;
+   
+    public bool Pressed = false ;
+    
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void ButtonDowned()
     {
-        Pressed = true;
+        if (Pressed == false)
+        {
+            Pressed = true;
+        }
+        else
+        {
+            Pressed = false;
+        }
     }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Pressed = false;
-    }
 }

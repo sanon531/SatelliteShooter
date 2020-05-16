@@ -11,6 +11,7 @@ public class ShootingScript : MonoBehaviour
     [SerializeField] public Vector3 angleToRotate;
     [SerializeField] public float bulletSpeed = 20;
     [SerializeField] public float bulletShotRate;
+    public bool currentPressed = false;
 
     Coroutine corou1;
     // Start is called before the first frame update
@@ -27,13 +28,15 @@ public class ShootingScript : MonoBehaviour
 
     private void Fire()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (shotButton.Pressed && !currentPressed)
         {
             corou1 = StartCoroutine(ShootingCoroutine());
+            currentPressed = true;
         }
-        if (Input.GetButtonUp("Fire1")) 
+        else if(!shotButton.Pressed && corou1 != null)
         {
             StopCoroutine(corou1);
+            currentPressed = false;
         }
     }
 
