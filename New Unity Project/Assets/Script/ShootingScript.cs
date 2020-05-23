@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ShootingScript : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class ShootingScript : MonoBehaviour
     [SerializeField] public Vector3 angleToRotate;
     [SerializeField] public float bulletSpeed = 20;
     [SerializeField] public float bulletShotRate;
+    //public event  pressedEvent ; 
     public bool currentPressed = false;
 
     Coroutine corou1;

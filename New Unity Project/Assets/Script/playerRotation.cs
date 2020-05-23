@@ -14,6 +14,7 @@ public class PlayerRotation : MonoBehaviour
     [SerializeField] public FixedButton fixedButton;
     [SerializeField] public bool currentPressed = false;
     private Quaternion rotateGoal = Quaternion.Euler(new Vector3(0, 0, 0));
+    private Quaternion _targetRotation = Quaternion.identity;
 
     Coroutine courou2;
 
@@ -35,7 +36,7 @@ public class PlayerRotation : MonoBehaviour
         }
     }
     IEnumerator RotateFront() {
-        rotateGoal = Quaternion.Euler(new Vector3(0, 0, 180));
+        rotateGoal = Quaternion.Euler(new Vector3(0, 0, 180f));
         while (true)
         {
             transform.localRotation = Quaternion.Lerp(transform.localRotation, rotateGoal , rotateSpeed * Time.deltaTime);
@@ -44,10 +45,11 @@ public class PlayerRotation : MonoBehaviour
     }
     IEnumerator RotateBack()
     {
-        rotateGoal = Quaternion.Euler(new Vector3(0, 0, 0));
+        rotateGoal = Quaternion.Euler(new Vector3(0,0,0f));
         while (true)
         {
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, rotateGoal, rotateSpeed * Time.deltaTime);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 0f)), rotateSpeed * Time.deltaTime);
+            //transform.localRotation = Quaternion.Euler(0, 0, Mathf.LerpAngle(90f, -90f, 0));
             yield return new WaitForSeconds(0.01f);
         }
     }
