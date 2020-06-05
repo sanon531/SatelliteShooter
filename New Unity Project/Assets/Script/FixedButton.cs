@@ -4,20 +4,38 @@ using UnityEngine.EventSystems;
 
 public class FixedButton : MonoBehaviour
 {
-   
-    public bool Pressed = false ;
-    
+    public static FixedButton instance;
+    public static bool Clicked = false;
+    public static bool Pressing = false;
 
-    public void ButtonDowned()
+    void Awake()
     {
-        if (Pressed == false)
+        if (instance == null) instance = this;
+        else if (instance != null) return;
+    }
+    
+    public void ButtonClicked()
+    {
+        Pressing = true;
+
+        if (Clicked == false)
         {
-            Pressed = true;
+            Clicked = true;
         }
         else
         {
-            Pressed = false;
+            Clicked = false;
         }
+
     }
+
+    public void ButtonUp()
+    {
+        Pressing = false;
+    }
+
+
+
+
 
 }

@@ -16,6 +16,23 @@ namespace PathCreation {
 
         GlobalDisplaySettings globalEditorDisplaySettings;
 
+
+        public static PathCreator ShipPath; 
+
+
+
+        void Awake()
+        {
+            if (ShipPath == null)
+            {
+                ShipPath = GameObject.Find("PathOfShip").GetComponent<PathCreator>();
+                Debug.Log(ShipPath);
+            }
+            else if (ShipPath != null) return;
+        }
+
+
+
         // Vertex path created from the current bezier path
         public VertexPath path {
             get {

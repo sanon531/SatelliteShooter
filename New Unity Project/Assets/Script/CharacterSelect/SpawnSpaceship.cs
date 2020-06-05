@@ -13,7 +13,6 @@ public class SpawnSpaceship : MonoBehaviour
     {
         player = Instantiate(charPrefabs[(int)OverSceneData.instance.currentSpaceship]);
         player.transform.position = transform.position;
-        player.GetComponents
 
     }
 }

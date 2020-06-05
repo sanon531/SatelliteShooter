@@ -219,11 +219,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5902561015522511816, guid: 499498e1e1bc3a34b9ee6a1e83001646,
     type: 3}
-  shotButton: {fileID: 0}
   firePoint: {fileID: 6572969224883245371}
   angleToRotate: {x: 0, y: 0, z: 0}
-  bulletSpeed: 50
-  bulletShotRate: 0.1
+  bulletSpeed: 60
+  bulletShotRate: 0.5
   currentPressed: 0
 --- !u!1 &6572969224387087136
 GameObject:
@@ -367,7 +366,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 20
-  fixedButton: {fileID: 0}
   currentPressed: 0
 --- !u!114 &6572969224387087143
 MonoBehaviour:

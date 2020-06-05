@@ -1,17 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-using PathCreation.Examples;
-
-public class CFPlayerRotation : MonoBehaviour
+public class PFPlayerRotation : MonoBehaviour
 {
-    //[SerializeField] public PathFollower pathFollower; 
-    //[Range (0f,180f)][SerializeField] public float rotateState = 180f;
-
+    // Start is called before the first frame update
     [SerializeField] public float rotateSpeed = 10f;
-    [SerializeField] public FixedButton fixedButton;
     [SerializeField] public bool currentPressed = false;
     private Quaternion rotateGoal = Quaternion.Euler(new Vector3(0, 0, 0));
     private Quaternion _targetRotation = Quaternion.identity;
@@ -20,14 +14,14 @@ public class CFPlayerRotation : MonoBehaviour
 
     private void Update()
     {
-        if (fixedButton.Pressed)
+        if (FixedButton.Pressing)
         {
-            if(courou2 != null )
+            if (courou2 != null)
                 StopCoroutine(courou2);
 
             courou2 = StartCoroutine(RotateBack());
         }
-        if (!fixedButton.Pressed && courou2 !=null)
+        if (!FixedButton.Pressing && courou2 != null)
         {
             if (courou2 != null)
                 StopCoroutine(courou2);
@@ -35,17 +29,18 @@ public class CFPlayerRotation : MonoBehaviour
 
         }
     }
-    IEnumerator RotateFront() {
+    IEnumerator RotateFront()
+    {
         rotateGoal = Quaternion.Euler(new Vector3(0, 0, 180f));
         while (true)
         {
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, rotateGoal , rotateSpeed * Time.deltaTime);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, rotateGoal, rotateSpeed * Time.deltaTime);
             yield return new WaitForSeconds(0.01f);
         }
     }
     IEnumerator RotateBack()
     {
-        rotateGoal = Quaternion.Euler(new Vector3(0,0,0f));
+        rotateGoal = Quaternion.Euler(new Vector3(0, 0, 0f));
         while (true)
         {
             transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 0f)), rotateSpeed * Time.deltaTime);

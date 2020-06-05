@@ -11,12 +11,19 @@ namespace PathCreation.Examples
         [SerializeField] public Vector3 angleToRotate;
         [SerializeField] public float addedDistance = 0;
 
-        public PathCreator pathCreator;
+        public PathCreator pathCreator ;
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
         float distanceTravelled;
 
         void Start() {
+
+            if (pathCreator == null)
+            {
+                pathCreator = PathCreator.ShipPath;
+            }
+
+
             if (pathCreator != null)
             {
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
