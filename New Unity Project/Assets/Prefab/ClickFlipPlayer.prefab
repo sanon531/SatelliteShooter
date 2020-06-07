@@ -221,8 +221,8 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 6572969224883245371}
   angleToRotate: {x: 0, y: 0, z: 0}
-  bulletSpeed: 60
-  bulletShotRate: 0.5
+  bulletSpeed: 20
+  bulletShotRate: 0.1
   currentPressed: 0
 --- !u!1 &6572969224387087136
 GameObject:
@@ -383,6 +383,7 @@ MonoBehaviour:
   ttag: 1
   particleExample: {fileID: 184256, guid: fcbdb234c15edf84da23af1263b469e1, type: 3}
   particleDead: {fileID: 184256, guid: 22a06787cd8e34a43bc5e36b7b6b2219, type: 3}
+  hpSlider: {fileID: 0}
 --- !u!1 &6572969224883245368
 GameObject:
   m_ObjectHideFlags: 0

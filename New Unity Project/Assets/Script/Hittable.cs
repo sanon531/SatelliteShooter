@@ -1,16 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hittable : MonoBehaviour
 {
-    [SerializeField] float health = 500;
     public enum TTag { player, enemy }
-    public TTag ttag = TTag.enemy;
-    public GameObject particleExample;
-    public GameObject particleDead;
+
+
+
+    [SerializeField] public float health = 500;
+    [SerializeField] public TTag ttag = TTag.enemy;
+    [SerializeField] public GameObject particleExample;
+    [SerializeField] public GameObject particleDead;
+
+    public Slider hpSlider = null;
+
+
     private GameObject spwanedParticle;
+
     // Start is called before the first frame update
+
+    private void Start()
+    {
+        
+    }
+
 
     private GameObject spawnParticle(GameObject gameObject)
     {
@@ -40,12 +55,12 @@ public class Hittable : MonoBehaviour
             if (health - damage > 0)
             {
                 health -= damage;
-                Destroy(bullet);
+                bullet.SetActive(false);
             }
             else
             {
                 GameObject deadParticle = spawnDead();
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
         return true;

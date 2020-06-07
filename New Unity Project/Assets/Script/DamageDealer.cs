@@ -9,7 +9,7 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] Hittable.TTag bullettag = Hittable.TTag.player; 
     private void OnEnable()
     {
-        Destroy(gameObject, 3f);
+        StartCoroutine(DelayedOff(3f));
     }
 
 
@@ -26,6 +26,12 @@ public class DamageDealer : MonoBehaviour
             collision.GetComponent<Hittable>().Hit(damage, bullettag, gameObject);
         }
     }
+    private IEnumerator DelayedOff(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        gameObject.SetActive(false);
+    }
+
 
 
 }
