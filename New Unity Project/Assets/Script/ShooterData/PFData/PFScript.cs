@@ -2,23 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PFScript : MonoBehaviour
+public class PFScript : ShooterBase
 {
     // Start is called before the first frame update
-    [SerializeField] public GameObject bulletPrefab;
-    [SerializeField] public Transform firePoint;
-    [SerializeField] public Vector3 angleToRotate;
-    [SerializeField] public float bulletSpeed = 30;
-    [SerializeField] public float bulletShotRate = 0.1f;
-    //public event  pressedEvent ; 
-    public bool currentPressed = false;
-
+    
+    
     Coroutine corou1;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void Update()
@@ -26,7 +16,7 @@ public class PFScript : MonoBehaviour
         Fire();
     }
 
-    private void Fire()
+    protected new virtual void Fire()
     {
         if (FixedButton.Pressing && !currentPressed)
         {
@@ -47,13 +37,12 @@ public class PFScript : MonoBehaviour
     IEnumerator ShootingCoroutine()
     {
 
-        while (true)
-        {
-            GameObject laser = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation) as GameObject;
-            //laser.transform.Rotate(angleToRotate);
-            laser.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        GameObject laser = objectManager.MakeObj("PlayerBullet2");
+        laser.transform.position = firePoint.position;
+        laser.transform.rotation = firePoint.rotation;
+        laser.transform.Rotate(angleToRotate);
+        laser.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
 
-            yield return new WaitForSeconds(0.1f);
-        }
+        yield return new WaitForSeconds(bulletShotRate);
     }
 }

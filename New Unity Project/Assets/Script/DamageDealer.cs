@@ -6,10 +6,11 @@ public class DamageDealer : MonoBehaviour
 {
 
     [SerializeField] public int damage = 100;
-    [SerializeField] Hittable.TTag bullettag = Hittable.TTag.player; 
+    [SerializeField] Hittable.TTag bullettag = Hittable.TTag.player;
+    [SerializeField] public float DelayedTime = 3f;
     private void OnEnable()
     {
-        StartCoroutine(DelayedOff(3f));
+        StartCoroutine(DelayedOff(DelayedTime));
     }
 
 

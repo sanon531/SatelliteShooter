@@ -5,14 +5,36 @@ using UnityEngine.EventSystems;
 
 public class ClickFlipScript : ShooterBase
 {
-
-
     Coroutine corou1;
 
-    void Awake()
+    protected ParticleSystem ps;
+    protected Gradient Grad;
+    protected GradientColorKey[] colorKeys;
+    protected GradientAlphaKey[] alphaKeys;
+
+ 
+
+
+    protected void SetGradient()
     {
-        objectManager = GameObject.Find("SceneObjectManager").GetComponent<ObjectManager>();
+        Debug.Log("a2");
+        colorKeys = new GradientColorKey[2];
+        colorKeys[0].color = Color.blue;
+        colorKeys[0].time = 0f;
+
+        colorKeys[1].color = new Color(0f, 0f, 0f, 0f);
+        colorKeys[0].time = 1f;
+
+
+        alphaKeys = new GradientAlphaKey[2];
+        alphaKeys[0].alpha = 1.0f;
+        alphaKeys[0].time = 0.0f;
+        alphaKeys[1].alpha = 0.0f;
+        alphaKeys[1].time = 1.0f;
+        Grad.SetKeys(colorKeys, alphaKeys);
     }
+
+
 
     void Update()
     {
@@ -33,16 +55,19 @@ public class ClickFlipScript : ShooterBase
         }
     }
 
+
+
     IEnumerator ShootingCoroutine() {
 
         while (true)
         {
-            GameObject laser = objectManager.MakeObj("PlayerBullet1");
+            GameObject laser = objectManager.MakeObj("PlayerBullet3");
             laser.transform.position = firePoint.position;
             laser.transform.rotation = firePoint.rotation;
-            laser.transform.Rotate(angleToRotate);
             laser.GetComponent<Rigidbody2D>().AddForce(firePoint.up*bulletSpeed,ForceMode2D.Impulse);
-
+            GameObject muzzle = objectManager.MakeObj("PlayerMuzzle1");
+            muzzle.transform.position = firePoint.position;
+            muzzle.transform.rotation = firePoint.rotation;
             yield return new WaitForSeconds(bulletShotRate);
         }
     }

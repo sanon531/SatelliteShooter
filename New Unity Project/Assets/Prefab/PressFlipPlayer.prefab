@@ -247,6 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d3741778a7c734b8d69f3a8006ff62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 500
+  ttag: 0
+  particleExample: {fileID: 0}
+  particleDead: {fileID: 0}
   bulletPrefab: {fileID: 5902561015522511816, guid: 499498e1e1bc3a34b9ee6a1e83001646,
     type: 3}
   firePoint: {fileID: 4157479249270142452}
@@ -254,6 +258,7 @@ MonoBehaviour:
   bulletSpeed: 20
   bulletShotRate: 0.5
   currentPressed: 0
+  objectManager: {fileID: 0}
 --- !u!1 &4157479250889977839
 GameObject:
   m_ObjectHideFlags: 0

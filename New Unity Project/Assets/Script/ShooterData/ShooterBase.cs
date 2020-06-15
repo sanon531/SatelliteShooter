@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class ShooterBase : MonoBehaviour
 {
-    [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public Transform firePoint;
     [SerializeField] public Vector3 angleToRotate;
     [SerializeField] public float bulletSpeed = 20;
     [SerializeField] public float bulletShotRate;
-    public ObjectManager objectManager; 
+    [SerializeField] public bool currentPressed = false;
 
-    public bool currentPressed = false;
+    protected ObjectManager objectManager;
+
+
+
+    void Awake()
+    {
+        objectManager = GameObject.Find("SceneObjectManager").GetComponent<ObjectManager>();
+    }
+
 
     protected void Fire() { }
-
-
-
-
-
-
 
 
 }

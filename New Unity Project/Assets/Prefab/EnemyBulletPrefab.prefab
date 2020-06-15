@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3278721031505326019}
   - component: {fileID: 3278721031505326018}
   - component: {fileID: 4344628724850506564}
+  - component: {fileID: 80694883857805687}
   m_Layer: 0
   m_Name: EnemyBulletPrefab
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3278721031505326017}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.1469007, y: -8.259457, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children:
   - {fileID: 5091961730343208275}
   m_Father: {fileID: 0}
@@ -65,10 +66,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0029104613, y: 0.08004032}
+  m_Offset: {x: -0.0029104613, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.53233844, y: 0.20355436}
@@ -95,6 +96,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   bullettag: 1
+  DelayedTime: 2
+--- !u!114 &80694883857805687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278721031505326017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd91a4dc4edbd2f48b3e31b8dca5745e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &9019143574797873328
 GameObject:
   m_ObjectHideFlags: 0

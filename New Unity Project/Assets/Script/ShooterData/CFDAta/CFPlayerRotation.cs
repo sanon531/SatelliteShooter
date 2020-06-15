@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 using PathCreation.Examples;
 
-public class CFPlayerRotation : MonoBehaviour
+public class CFPlayerRotation : Hittable
 {
     //[SerializeField] public PathFollower pathFollower; 
     //[Range (0f,180f)][SerializeField] public float rotateState = 180f;
 
-    [SerializeField] public float rotateSpeed = 10f;
+    [SerializeField] public float rotateSpeed = 20f;
     [SerializeField] public bool currentPressed = false;
     private Quaternion rotateGoal = Quaternion.Euler(new Vector3(0, 0, 0));
     private Quaternion _targetRotation = Quaternion.identity;
@@ -37,7 +37,7 @@ public class CFPlayerRotation : MonoBehaviour
         while (true)
         {
             transform.localRotation = Quaternion.Lerp(transform.localRotation, rotateGoal , rotateSpeed * Time.deltaTime);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(1f);
         }
     }
     IEnumerator RotateBack()
@@ -45,9 +45,9 @@ public class CFPlayerRotation : MonoBehaviour
         rotateGoal = Quaternion.Euler(new Vector3(0,0,0f));
         while (true)
         {
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 0f)), rotateSpeed * Time.deltaTime);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, rotateGoal, rotateSpeed * Time.deltaTime);
             //transform.localRotation = Quaternion.Euler(0, 0, Mathf.LerpAngle(90f, -90f, 0));
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(1f);
         }
     }
 }
