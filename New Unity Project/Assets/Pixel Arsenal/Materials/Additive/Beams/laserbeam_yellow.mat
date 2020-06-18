@@ -31,8 +31,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: a6b4cb15ebec7064c813b2d35e20ca49, type: 3}
-        m_Scale: {x: 7.4549794, y: 1}
-        m_Offset: {x: -539.0564, y: 0}
+        m_Scale: {x: 3.3436146, y: 1}
+        m_Offset: {x: -544.7139, y: 0}
     m_Floats:
     - _BlendOp: 0
     - _BumpScale: 1
